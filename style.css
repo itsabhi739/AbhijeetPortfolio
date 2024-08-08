@@ -87,7 +87,7 @@ section .title::after{
     position: fixed;
     width: 100%;
     z-index: 999;
-    padding: 30px 0;
+    padding: 20px 0;
     font-family: 'Ubuntu', sans-serif;
     transition: all 0.3s ease;
 }
@@ -101,7 +101,7 @@ section .title::after{
     justify-content: space-between;
 }
 .navbar .logo a{
-    color: white;
+    color: #F86230;
     font-size: 35px;
     font-weight: 600;
 }
@@ -110,7 +110,7 @@ section .title::after{
     transition: all 0.3s ease;
 }
 .navbar.sticky .logo a span{
-    color: #fff;
+    color: #F86230;
 }
 .navbar .menu li{
     list-style: none;
@@ -118,7 +118,7 @@ section .title::after{
 }
 .navbar .menu li a{
     display: block;
-    color: #fff;
+    color: #fefefe;
     font-size: 18px;
     font-weight: 500;
     margin-left: 25px;
@@ -133,7 +133,7 @@ section .title::after{
 
 /* menu btn styling */
 .menu-btn{
-    color: #fff;
+    color: #f86230;
     font-size: 23px;
     cursor: pointer;
     display: none;
@@ -170,7 +170,7 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("images/bg3.png") no-repeat center;
+    background: url("images/bg3.png") center no-repeat;
     height: 100vh;
     color: #fff;
     min-height: 500px;
@@ -178,6 +178,7 @@ section .title::after{
     background-attachment: fixed;
     font-family: 'Ubuntu', sans-serif;
     background-color: black;
+    object-fit: cover;
 }
 .home .max-width{
   width: 100%;
@@ -399,7 +400,7 @@ section .title::after{
 
 /* projects section styling */
 .projects .title::after{
-    content: "What i have done";
+    content: "projects done";
 }
 .projects .carousel .card{
     background: #222;
