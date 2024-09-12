@@ -310,7 +310,7 @@
 //   get ref to database services
 const database = getDatabase(app);
 
-document.getElementById("submit").addEventListener('click',function(e){
+document.getElementById("message").addEventListener('click',function(e){
     e.preventDefault();
     set(ref(database,'user/'+ document.getElementById("username").value,{
         username:document.getElementById("username").value,
