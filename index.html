@@ -60,11 +60,7 @@
                 </div>
                 <div class="column right">
                     <div class="text">I'm Abhijeet and I'm a <span class="typing-2"></span></div>
-                    <p>As a highly motivated and ambitious fourth-year BTech (IT) student,
-                         I'm deeply engaged in front-end web development, backed by a strong command 
-                         of C++. As an Information Technology graduate,
-                         I eagerly seek new entry-level web developer positions
-                          that offer challenges and opportunities for growth..</p>
+                    <p>With a solid grasp of C++, I am a fourth-year B.Tech (Information Technology) student who is very driven and ambitious. I am extensively involved in front-end web development. I am a recent graduate in information technology, and I am actively looking for new entry-level web development jobs that provide challenges and room for advancement...                    </p>
                     <a href="https://drive.google.com/file/d/1G-AN5--zM_Lrnv_Xuv4u1RpazWlL5oeo/view?usp=drive_link">Download CV</a>
                 </div>
             </div>
@@ -133,7 +129,7 @@
                     <div class="bars">
                         <div class="info">
                             <span>CSS</span>
-                            <span>60%</span>
+                            <span>75%</span>
                         </div>
                         <div class="line css"></div>
                     </div>
@@ -154,7 +150,7 @@
                     <div class="bars">
                         <div class="info">
                             <span>MySQL</span>
-                            <span>60%</span>
+                            <span>80%</span>
                         </div>
                         <div class="line mysql"></div>
                     </div>
@@ -165,17 +161,17 @@
                         </div>
                         <div class="line react"></div>
                     </div>
-                    <div class="bars">
+                    <!-- <div class="bars">
                         <div class="info">
                             <span>WordPress</span>
                             <span>50%</span>
                         </div>
                         <div class="line wordpress"></div>
-                    </div>
+                    </div> -->
                     <div class="bars">
                         <div class="info">
                             <span>Tailwind CSS</span>
-                            <span>50%</span>
+                            <span>70%</span>
                         </div>
                         <div class="line wordpress"></div>
                     </div>
@@ -193,7 +189,7 @@
                     <div class="box">
                         <img src="images/C++.png" alt="">
                         <div class="text"><a href="https://drive.google.com/file/d/192U5X2iPpL3p1S1L5VY-Y7dWRSMLW7W6/view?usp=drive_link" target="_blank">Hotel Management System(C++)</a></div>
-                        <p style="text-align:justify">Developed a C++ hotel management system,
+                        <p style="text-align:justify">Developed a C++ Hotel Management System,
                              prioritizing features like room booking, customer record management, and real-time 
                              availability tracking. Led project development, 
                             emphasizing efficiency and seamless integration.
@@ -242,7 +238,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="info">
                                 <div class="head">Address</div>
-                                <div class="sub-title">Kondagaon,(C.G.),India</div>
+                                <div class="sub-title">Kondagaon (C.G.) India</div>
                             </div>
                         </div>
                         <div class="row">
@@ -259,20 +255,20 @@
                     <form action="#">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" value="" placeholder="Name" id="username" required>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" value="" placeholder="Email" id="email" required>
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" value="" placeholder="Subject" id="subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Type Something" required></textarea>
+                            <textarea cols="30" rows="10" value="" placeholder="Type Something..." id="message" required></textarea>
                         </div>
                         <div class="button-area">
-                            <button type="submit">Send message</button>
+                            <button type="submit" class="submit" id="message" value="submit">Send message</button>
                         </div>
                     </form>
                 </div>
@@ -292,6 +288,39 @@
 
     </footer>
 
+    <script type="module">
+        
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+  import { getDatabase,ref ,set,get,child } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCU0lStZWNI7txTTcf0E8u3wvhumRYiWXM",
+    authDomain: "myportfolio-739.firebaseapp.com",
+    projectId: "myportfolio-739",
+    storageBucket: "myportfolio-739.appspot.com",
+    messagingSenderId: "835951309582",
+    appId: "1:835951309582:web:f0296405d71a55b7a85d5f"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+//   get ref to database services
+const database = getDatabase(app);
+
+document.getElementById("submit_button").addEventListener('click',function(e){
+    e.preventDefault();
+    set(ref(database,'user/'+ document.getElementById("username").value,{
+        username:document.getElementById("username").value,
+        email:document.getElementById("email").value,
+        subject:document.getElementById("subject").value,
+        message:document.getElementById("message").value,
+    }))
+    console.log(JSON.stringify(data))
+})
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

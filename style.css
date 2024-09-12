@@ -380,7 +380,7 @@ section .title::after{
     width: 90%;
 }
 .skills-content .right .css::before{
-    width: 60%;
+    width: 75%;
 }
 .skills-content .right .cpp::before{
     width: 80%;
@@ -389,13 +389,13 @@ section .title::after{
     width: 70%;
 }
 .skills-content .right .mysql::before{
-    width: 60%;
+    width: 80%;
 }
 .skills-content .right .react::before{
     width: 70%;
 }
 .skills-content .right .wordpress::before{
-    width: 50%;
+    width: 70%;
 }
 
 /* projects section styling */
