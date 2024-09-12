@@ -1,3 +1,41 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyC5mirQ_S3ALwKsDRnb0RDuKYJ2xC8XISw",
+    authDomain: "abhijeetportfolio-739.firebaseapp.com",
+    databaseURL: "https://abhijeetportfolio-739-default-rtdb.firebaseio.com",
+    projectId: "abhijeetportfolio-739",
+    storageBucket: "abhijeetportfolio-739.appspot.com",
+    messagingSenderId: "442796985979",
+    appId: "1:442796985979:web:fec842ab71b2a1197a5cde"
+  };
+
+  //initialise the database
+  firebase.initializeApp(firebaseConfig);
+
+  //reference the database
+
+  var AbhijeetPortfolioDB = firebase.database().ref('AbhijeetPortfolio');
+
+  document.getElementById('contactForm').addEventListener('submit',submitForm);
+
+// making the function 
+
+  function submitForm(e){
+    e.preventDefault();
+
+    var username = getElememtValue('username');
+    var  email = getElememtValue('email');
+    var subject  = getElememtValue('subject');
+    var  message = getElememtValue('message');
+
+    // console.log(username,email,subject,message);
+    saveMessages(username,email,subject,message);
+
+    // show alert
+    document.querySelector(".alert").style.display = "block";
+  }
+
+
+
 $(document).ready(function(){
     $(window).scroll(function(){
         // sticky navbar on scroll script
