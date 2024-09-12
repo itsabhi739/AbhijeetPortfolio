@@ -34,6 +34,29 @@ const firebaseConfig = {
     document.querySelector(".alert").style.display = "block";
   }
 
+//   to save the messages we create a function that stores data as a object
+
+  const saveMessages = (username,email,subject,message)=>{
+    var newContactForm = AbhijeetPortfolioDB.push();
+
+    newContactForm.set({
+
+        username:username,
+        email: email,
+        subject: subject,
+        message: message,
+
+    })
+  }
+
+  //function to get the value
+
+  const getElememtValue = (id)=>{
+    return document.getElementById(id).value;
+  }
+
+
+
 
 
 $(document).ready(function(){
