@@ -562,6 +562,28 @@ section .title::after{
   background: none;
   border: 2px solid #565c5e;
 }
+.alert{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    width: 100%;
+    background-color: rgb(80, 222, 80);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    /* font-weight:600; */
+    display: none;
+}
+
+#checked{
+    position: absolute;
+    padding-inline: 6px;
+    left:450px;
+    display: flex;
+    justify-content: center;
+}
 /* footer section styling */
 footer{
     background: #111;
