@@ -1,3 +1,6 @@
+// #003049 -blue
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyC5mirQ_S3ALwKsDRnb0RDuKYJ2xC8XISw",
     authDomain: "abhijeetportfolio-739.firebaseapp.com",
@@ -10,14 +13,37 @@ const firebaseConfig = {
 
   //initialise the database
   firebase.initializeApp(firebaseConfig);
-
+  
   //reference the database
-
+  
   var AbhijeetPortfolioDB = firebase.database().ref('AbhijeetPortfolio');
-
+  
   document.getElementById('contactForm').addEventListener('submit',submitForm);
-
-// making the function 
+  
+  const button = document.querySelector("#message");
+        button.addEventListener("click", (e) => {
+          e.preventDefault;
+          button.classList.add("animate");
+          setTimeout(() => {
+            button.classList.remove("animate");
+          }, 600);
+        });
+  
+  
+  const downloadButton = document.querySelector("#download");
+        downloadButton.addEventListener("click", (e) => {
+          e.preventDefault;
+          downloadButton.classList.add("animate");
+          downloadButton.innerHTML = "Downloaded";
+          setTimeout(()=>{
+              downloadButton.innerHTML = "Download";
+          },3000)
+          setTimeout(() => {
+              downloadButton.classList.remove("animate");
+          }, 600);
+        });
+        
+  // making the function 
 
   function submitForm(e){
     e.preventDefault();
@@ -31,29 +57,34 @@ const firebaseConfig = {
     saveMessages(username,email,subject,message);
 
     // show alert
+    button.innerHTML = "Message Sent";
     document.querySelector(".alert").style.display = "block";
+    setTimeout(() => {
+        button.innerHTML = "Send Message";
+        document.querySelector(".alert").style.display = "none";
+    }, 3000);
   }
 
 //   to save the messages we create a function that stores data as a object
 
-  const saveMessages = (username,email,subject,message)=>{
+const saveMessages = (username,email,subject,message)=>{
     var newContactForm = AbhijeetPortfolioDB.push();
-
+    
     newContactForm.set({
-
+        
         username:username,
         email: email,
         subject: subject,
         message: message,
-
+        
     })
-  }
+}
 
-  //function to get the value
+//function to get the value
 
-  const getElememtValue = (id)=>{
+const getElememtValue = (id)=>{
     return document.getElementById(id).value;
-  }
+}
 
 
 
@@ -132,3 +163,44 @@ $(document).ready(function(){
         }
     });
 });
+
+
+
+
+const body = document.querySelector("body");
+
+const cursor = document.querySelector(".cursor");
+
+body.addEventListener("mousemove",function(details){
+
+    cursor.style.left = (details.x)+"px"
+    cursor.style.top = (details.y)+"px"
+    cursor.style.backgroundColor = 'white';
+})
+
+
+const text2 = document.querySelector('.text-2');
+
+text2.addEventListener('mouseover',function(){
+    cursor.style.height = '70px';
+    cursor.style.width = "70px";
+})
+
+text2.addEventListener('mouseout',function(){
+    cursor.style.height = '20px';
+    cursor.style.width = '20px';
+})
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // HTML progress bar
+    document.querySelector('.skills-content .right .html::before').style.width = '90%';
+
+    // CSS progress bar
+    document.querySelector('.skills-content .right .css::before').style.width = '80%';
+
+    // JavaScript progress bar
+    document.querySelector('.skills-content .right .js::before').style.width = '70%';
+});
+
+
