@@ -1,6 +1,9 @@
 /*  import google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 
+
+/* 57c6d5 */
+
 *{
     margin: 0;
     padding: 0;
@@ -23,10 +26,22 @@ html{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #f86230;
 }
 
 /* all similar content styling codes */
+
+
+.cursor{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(255, 98, 0);
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    transition: all linear 0.2s;
+}
+
 section{
     padding: 100px 0;
 }
@@ -37,7 +52,7 @@ section{
     display: block;
 }
 .about, .services, .skills, .projects, .contact, footer{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins',sans-serif;
 }
 .about .about-content,
 .services .serv-content,
@@ -57,9 +72,15 @@ section .title{
     padding-bottom: 20px;
     font-family: 'Ubuntu', sans-serif;
 }
+
+.download{
+    margin-right: 14px;
+    font-size: 16px;
+}
+
 .box .text a
 {
-    color: #57C6D5;
+    color: #ff5500;
 }
 section .title::before{
     content: "";
@@ -76,9 +97,9 @@ section .title::after{
     bottom: -8px;
     left: 50%;
     font-size: 20px;
-    color:  #57c6d5;
+    color:  #81c9ef;
     padding: 0 5px;
-    background: #fff;
+    background: #FFFAFA;
     transform: translateX(-50%);
 }
 
@@ -93,7 +114,7 @@ section .title::after{
 }
 .navbar.sticky{
     padding: 15px 0;
-    background: #565c5e;
+    background: #003049;
 }
 .navbar .max-width{
     display: flex;
@@ -101,16 +122,20 @@ section .title::after{
     justify-content: space-between;
 }
 .navbar .logo a{
-    color: #F86230;
+    color: #003049;
     font-size: 35px;
     font-weight: 600;
 }
+
+.navbar.sticky .logo a{
+    color: #fefefe;
+}
 .navbar .logo a span{
-    color: #57c6d5;
+    color: #81c9ef;
     transition: all 0.3s ease;
 }
 .navbar.sticky .logo a span{
-    color: #F86230;
+    color: #81c9ef;
 }
 .navbar .menu li{
     list-style: none;
@@ -118,12 +143,17 @@ section .title::after{
 }
 .navbar .menu li a{
     display: block;
-    color: #fefefe;
+    color: #003049;
     font-size: 18px;
     font-weight: 500;
     margin-left: 25px;
     transition: color 0.3s ease;
 }
+.navbar.sticky .menu li a{
+    color: #fefefe;
+}
+
+
 .navbar .menu li a:hover{
     color: #f86230;
 }
@@ -134,7 +164,7 @@ section .title::after{
 /* menu btn styling */
 .menu-btn{
     color: #f86230;
-    font-size: 23px;
+    font-size: 24px;
     cursor: pointer;
     display: none;
 }
@@ -142,12 +172,12 @@ section .title::after{
     position: fixed;
     height: 45px;
     width: 42px;
-    background: #57c6d5;
+    background: #81c9ef;
     right: 30px;
     bottom: 10px;
     text-align: center;
     line-height: 45px;
-    color: #fff;
+    color: #FFFAFA;
     z-index: 9999;
     font-size: 30px;
     border-radius: 6px;
@@ -170,15 +200,17 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("images/bg3.png") center no-repeat;
+    background: url("images/Untitled\ design\ \(6\).png") center no-repeat;
     height: 100vh;
-    color: #fff;
+    color: #00090d;  
+    /* for text */
     min-height: 500px;
     background-size: cover;
     background-attachment: fixed;
     font-family: 'Ubuntu', sans-serif;
-    background-color: black;
+    background-color: #FFFAFA;
     object-fit: cover;
+    cursor: pointer;
 }
 .home .max-width{
   width: 100%;
@@ -188,7 +220,7 @@ section .title::after{
   margin-right: 0;
 }
 .home .home-content .text-1{
-    font-size: 27px;
+    font-size: 24px;
 }
 .home .home-content .text-2{
     font-size: 75px;
@@ -205,18 +237,26 @@ section .title::after{
 }
 .home .home-content a{
     display: inline-block;
-    background: #f86230;
-    color: #fff;
-    font-size: 25px;
-    padding: 12px 36px;
-    margin-top: 20px;
+    background: #003049;
+    color: #FFFAFA;
+    font-size: 24px;
+    padding:  4px 6px;
+    margin-top: 30px;
+    margin-right: 15px;
     font-weight: 400;
     border-radius: 6px;
-    border: 2px solid #f86230;
+    border: 2px solid #003049;
     transition: all 0.3s ease;
 }
+.texthead{
+    font-size: 16px;
+    margin-top: 45px;
+    font-weight: 400;
+    color: #003049;
+}
+
 .home .home-content a:hover{
-    color:#57c6d5;
+    color:#003049;
     background: none;
     border:2px solid #565c5e ;
 }
@@ -238,7 +278,7 @@ section .title::after{
     width: 55%;
 }
 .about .about-content .right .text{
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -247,50 +287,93 @@ section .title::after{
 }
 .about .about-content .right p{
     text-align: justify;
+    font-size: 16px;
 }
 .about .about-content .right a{
+    position: relative;
     display: inline-block;
-    background: #f86230;
-    color: #fff;
-    font-size: 20px;
+    background: #003049;
+    color: #FFFAFA;
+    font-size: 16px;
     font-weight: 500;
-    padding: 10px 30px;
-    margin-top: 20px;
+    padding: 8px 14px;
     border-radius: 6px;
-    border: 2px solid #f86230;
+    border: 2px solid #003049;
     transition: all 0.3s ease;
+}
+
+
+.about .about-content .right>button{
+    border: none;
+    margin-top: 50px;
 }
 .about .about-content .right a:hover{
     border: 2px solid #565c5e;
-    color: #57c6d5;
+    color: #003049;
     background: none;
 }
 
+
+.progress-wrapper{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* services section styling */
 .services, .projects{
-    color:#fff;
-    background: #111;
+    color:#003049;
+    background: #fefefe;
 }
 .services .title::before,
 .projects .title::before{
-    background: #fff;
+    background: #003049;
 }
 .services .title::after,
 .projects .title::after{
-    background: #111;
+    background: #FFFAFA;
     content: "what i provide";
 }
 .services .serv-content .card{
     width: calc(33% - 20px);
-    background: #222;
+    background: #faf9f6;
     text-align: center;
+    border: 1px solid rgb(194, 193, 193);
     border-radius: 6px;
     padding: 50px 25px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 .services .serv-content .card:hover{
-    background: #f86230;
+    background: #ecf8f7;
 }
 .services .serv-content .card .box{
     transition: all 0.3s ease;
@@ -300,21 +383,21 @@ section .title::after{
 }
 .services .serv-content .card i{
     font-size: 50px;
-    color:#f86230;
+    color:#81c9ef;
     transition: color 0.3s ease;
 }
 .services .serv-content .card:hover i{
-    color: #fff;
+    color: #003049;
 }
 .services .serv-content .card .text{
-    color: #57c6d5;
-    font-size: 25px;
+    color: #003049;
+    font-size: 24px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
 .services .serv-content .card .text:hover
 {
-    color: #57c6d5;
+    color: #003049;
 }
 
 /* skills section styling */
@@ -336,7 +419,7 @@ section .title::after{
 .skills .skills-content .left a{
     display: inline-block;
     background: #f86230;
-    color: #fff;
+    color: #FFFAFA;
     font-size: 18px;
     font-weight: 500;
     padding: 8px 16px;
@@ -379,10 +462,22 @@ section .title::after{
 .skills-content .right .html::before{
     width: 90%;
 }
+
+.skills .skills-content .right .line {
+    height: 5px;
+    width: 100%;
+    background: lightgrey;
+    position: relative;
+    margin-top: 10px;
+}
+
 .skills-content .right .css::before{
     width: 75%;
 }
 .skills-content .right .cpp::before{
+    width: 80%;
+}
+.skills-content .right .java::before{
     width: 80%;
 }
 .skills-content .right .js::before{
@@ -403,15 +498,16 @@ section .title::after{
     content: "projects done";
 }
 .projects .carousel .card{
-    background: #222;
+    background: #faf9f6;
     border-radius: 6px;
     padding: 25px 35px;
     text-align: center;
     overflow: hidden;
     transition: all 0.3s ease;
+    border: 1px solid rgb(183, 182, 182);
 }
 .projects .carousel .card:hover{
-    background: #f86230;
+    background: #ecf8f7;
 }
 .projects .carousel .card .box{
     display: flex;
@@ -424,25 +520,32 @@ section .title::after{
     transform: scale(1.05);
 }
 .projects .carousel .card .text{
-    color: #57c6d5;
-    font-size: 25px;
+    color: #003049;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+
+.projects .carousel .card a{
+    color: #003049;
+    font-size: 24px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
 .projects .carousel .card .text:hover
 {
-    color: #57c6d5;
+    color: #003049;
 }
 .projects .carousel .card img{
     height: 150px;
     width: 150px;
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid #f86230;
+    border: 5px solid #81c9ef;
     transition: all 0.3s ease;
 }
 .projects .carousel .card:hover img{
-    border-color: #fff;
+    border-color: #FFFAFA;
 }
 .owl-dots{
     text-align: center;
@@ -454,7 +557,7 @@ section .title::after{
     margin: 0 5px;
     outline: none!important;
     border-radius: 50%;
-    border: 2px solid #f86230!important;
+    border: 2px solid #003049!important;
     transition: all 0.3s ease;
 }
 .owl-dot.active{
@@ -463,7 +566,7 @@ section .title::after{
 }
 .owl-dot.active,
 .owl-dot:hover{
-    background: #f86230!important;
+    background: #003049!important;
 }
 
 /* contact section styling */
@@ -493,8 +596,8 @@ section .title::after{
     margin-left: 30px;
 }
 .contact .contact-content .row i{
-    font-size: 25px;
-    color: #f86230;
+    font-size: 24px;
+    color: #003049;
 }
 .contact .contact-content .info .head{
     font-weight: 500;
@@ -522,7 +625,7 @@ section .title::after{
 .contact .right form .textarea textarea{
     height: 100%;
     width: 100%;
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(183, 183, 183);
     border-radius: 6px;
     outline: none;
     padding: 0 15px;
@@ -532,7 +635,8 @@ section .title::after{
 }
 .contact .right form .field input:focus,
 .contact .right form .textarea textarea:focus{
-    border-color: #b3b3b3;
+    border-color: #a4a3a3;
+    background-color: #ecf8f7;
 }
 .contact .right form .textarea textarea{
   padding-top: 10px;
@@ -543,22 +647,24 @@ section .title::after{
   align-items: center;
 }
 .right form .button-area button{
-  color: #fff;
+  color: #FFFAFA;
   display: block;
   width: 160px!important;
   height: 45px;
   outline: none;
-  font-size: 18px;
   font-weight: 500;
-  border-radius: 6px;
   cursor: pointer;
   flex-wrap: nowrap;
-  background: #f86230 ;
-  border: 2px solid #f86230 ;
+  background: #003049 ;
+  border: 2px solid #003049 ;
   transition: all 0.3s ease;
+  font-size: 16px;
+  padding: 8px 14px;
+  margin-top: 30px;
+  border-radius: 6px;
 }
 .right form .button-area button:hover{
-  color: #57c6d5;
+  color: #003049;
   background: none;
   border: 2px solid #565c5e;
 }
@@ -588,11 +694,11 @@ section .title::after{
 footer{
     background: #111;
     padding: 15px 23px;
-    color: #fff;
+    color: #FFFAFA;
     text-align: center;
 }
 footer span a{
-    color: #f86230;
+    color: #81c9ef;
     text-decoration: none;
 }
 footer span a:hover{
@@ -609,8 +715,8 @@ footer span a:hover{
 
 .links a {
     position: relative;
-    color: white;
-    font-size: 25px;
+    color: #FFFAFA;
+    font-size: 24px;
     letter-spacing: 1px;
     transition: 0.3s;
     transition-property: transform;
@@ -668,7 +774,7 @@ footer span a:hover{
     .navbar .menu li a{
         display: inline-block;
         margin: 20px 0;
-        font-size: 25px;
+        font-size: 24px;
     }
     .home .home-content .text-2{
         font-size: 70px;
@@ -752,4 +858,181 @@ footer span a:hover{
         font-size: 23px;
         line-height: 38px;
     }
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+#message {
+    margin-top: 30px;
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgb(0, 48, 73);
+  transition: all 0.2s ease;
+}
+
+#message:hover{
+    background-color: rgb(0, 48, 73,90%);
+    transform: scale(1.05);
+}
+#message:active {
+  transform: scale(0.96);
+}
+#message:before,
+#message:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+#message.animate::before {
+  top: -70%;
+  background-image: radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, rgb(129, 201, 239) 20%, transparent 30%),
+    radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, rgb(129, 201, 239) 15%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, rgb(129, 201, 239) 20%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  animation: greentopBubbles ease-in-out 0.6s forwards infinite;
+}
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+#message.animate::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, rgb(129, 201, 239) 15%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, rgb(129, 201, 239) 20%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  animation: greenbottomBubbles ease-in-out 0.6s forwards infinite;
+}
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+#download {
+    margin-top: 30px;
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgb(0, 48, 73);
+  transition: all 0.2s ease;
+}
+#download:hover{
+    background-color: rgb(0, 48, 73,90%);
+    transform: scale(1.05);
+}
+#download:active {
+  transform: scale(0.96);
+}
+#download:before,
+#download:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+#download.animate::before {
+  top: -70%;
+  background-image: radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, rgb(129, 201, 239) 20%, transparent 30%),
+    radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, rgb(129, 201, 239) 15%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, rgb(129, 201, 239) 20%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  animation: greentopBubbles ease-in-out 0.6s forwards infinite;
+}
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+#download.animate::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, rgb(129, 201, 239) 15%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%),
+    radial-gradient(circle, rgb(0, 48, 73) 20%, transparent 20%),
+    radial-gradient(circle, rgb(129, 201, 239) 20%, transparent 20%),
+    radial-gradient(circle, #f86230 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  animation: greenbottomBubbles ease-in-out 0.6s forwards infinite;
+}
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
 }
