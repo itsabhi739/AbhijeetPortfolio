@@ -12,11 +12,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
 
 
    
 </head>
 <body">
+<div class="cursor"></div>
     <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
@@ -40,11 +42,14 @@
     <!-- home section start -->
     <section class="home" id="home">
         <div class="max-width">
-            <div class="home-content" style="background-color: #000000;">
+            <div class="home-content">
                 <div class="text-1">Hello, my name is</div>
                 <div class="text-2">Abhijeet Tiwari</div>
                 <div class="text-3">And I'm a <span class="typing"></span></div>
-                <a href="https://github.com/itsabhi739/">GitHub</a>
+                <p class="texthead">Lets Connect</p>
+                <a href="mailto:itsabhi739@gmail.com" target="_blank"><i class="ri-mail-fill"></i></a>
+                <a href="https://github.com/itsabhi739/" target="_blank"><i class="ri-github-fill"></i></a>
+                <a href="https://www.linkedin.com/in/abhijeet-tiwari-a96940214/" target="_blank"><i <i class="ri-linkedin-fill"></i></a>
             </div>
         </div>
     </section>
@@ -59,8 +64,11 @@
                 </div>
                 <div class="column right">
                     <div class="text">I'm Abhijeet and I'm a <span class="typing-2"></span></div>
-                    <p>With a solid grasp of C++, I am a fourth-year B.Tech (Information Technology) student who is very driven and ambitious. I am extensively involved in front-end web development. I am a recent graduate in information technology, and I am actively looking for new entry-level web development jobs that provide challenges and room for advancement...                    </p>
-                    <a href="https://drive.google.com/file/d/1G-AN5--zM_Lrnv_Xuv4u1RpazWlL5oeo/view?usp=drive_link">Download CV</a>
+                    <p>As a driven and ambitious B.Tech graduate in Information Technology with a solid foundation in C++, I have a strong focus on front-end web development. I am actively seeking entry-level web development roles that offer challenging projects and opportunities for growth, where I can leverage my skills and passion for creating impactful digital experiences.</p>
+            
+                    <a href="Abhijeet_Tiwari_Resume.pdf" id="download" download >
+                        <i class="ri-download-2-line download"> </i>Download CV
+                    </a>
                 </div>
             </div>
         </div>
@@ -108,12 +116,7 @@
                 <div class="column left">
                     <div class="text">My creative skills & experiences.</div>
                  
-                    <p>I possess a strong grasp of HTML, CSS, and JavaScript, with proficiency 
-                        in ReactJS and ongoing learning in Node.js to bolster my front-end development 
-                        capabilities. Additionally, I have a solid command of C++ and intermediate proficiency 
-                        in MySQL. My certification from the Web Development Bootcamp 2023 underscores my dedication
-                         to continuous improvement.I am currently enhancing my knowledge in Tailwind CSS.
-
+                    <p>I am proficient in HTML, CSS, JavaScript, and ReactJS, with ongoing learning in Node.js. I have hands-on experience in Java, strong skills in C++, and intermediate expertise in MySQL. I have also mastered Tailwind CSS for building sleek, responsive interfaces, and bring a focus on creating efficient, user-friendly web applications.
                     </p>
                   
                 </div>
@@ -141,6 +144,13 @@
                     </div>
                     <div class="bars">
                         <div class="info">
+                            <span>Java</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="line java"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
                             <span>JavaScript</span>
                             <span>70%</span>
                         </div>
@@ -160,13 +170,6 @@
                         </div>
                         <div class="line react"></div>
                     </div>
-                    <!-- <div class="bars">
-                        <div class="info">
-                            <span>WordPress</span>
-                            <span>50%</span>
-                        </div>
-                        <div class="line wordpress"></div>
-                    </div> -->
                     <div class="bars">
                         <div class="info">
                             <span>Tailwind CSS</span>
@@ -253,7 +256,7 @@
                     <div class="text">Message me</div>
                     <form action="#" id="contactForm">
                         <div class="field alert">
-                            <img src="./images/checked.png" alt="-" id="checked" srcset="" >Thankyou for your time! Message delivered</div>
+                            <img src="./images/checked.png" alt="-" id="checked" srcset="" >Message delivered</div>
                         <div class="fields">
                             <div class="field name">
                                 <input type="text" value="" placeholder="Name" id="username" required>
@@ -266,7 +269,7 @@
                             <input type="text" value="" placeholder="Subject" id="subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" value="" placeholder="Type Something..." id="message" required></textarea>
+                            <textarea cols="30" rows="10" value="" placeholder="Type Something..." required></textarea>
                         </div>
                         <div class="button-area">
                             <button type="submit" class="submit" id="message" value="submit">Send message</button>
