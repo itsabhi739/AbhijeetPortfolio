@@ -1,206 +1,443 @@
-// #003049 -blue
-
+/* ============================================================
+   FIREBASE CONFIGURATION
+============================================================ */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC5mirQ_S3ALwKsDRnb0RDuKYJ2xC8XISw",
-    authDomain: "abhijeetportfolio-739.firebaseapp.com",
-    databaseURL: "https://abhijeetportfolio-739-default-rtdb.firebaseio.com",
-    projectId: "abhijeetportfolio-739",
-    storageBucket: "abhijeetportfolio-739.appspot.com",
-    messagingSenderId: "442796985979",
-    appId: "1:442796985979:web:fec842ab71b2a1197a5cde"
-  };
+  apiKey: "AIzaSyC5mirQ_S3ALwKsDRnb0RDuKYJ2xC8XISw",
+  authDomain: "abhijeetportfolio-739.firebaseapp.com",
+  databaseURL: "https://abhijeetportfolio-739-default-rtdb.firebaseio.com",
+  projectId: "abhijeetportfolio-739",
+  storageBucket: "abhijeetportfolio-739.appspot.com",
+  messagingSenderId: "442796985979",
+  appId: "1:442796985979:web:fec842ab71b2a1197a5cde"
+};
 
-  //initialise the database
-  firebase.initializeApp(firebaseConfig);
-  
-  //reference the database
-  
-  var AbhijeetPortfolioDB = firebase.database().ref('AbhijeetPortfolio');
-  
-  document.getElementById('contactForm').addEventListener('submit',submitForm);
-  
-  const button = document.querySelector("#message");
-        button.addEventListener("click", (e) => {
-          e.preventDefault;
-          button.classList.add("animate");
-          setTimeout(() => {
-            button.classList.remove("animate");
-          }, 600);
-        });
-  
-  
-  const downloadButton = document.querySelector("#download");
-        downloadButton.addEventListener("click", (e) => {
-          e.preventDefault;
-          downloadButton.classList.add("animate");
-          downloadButton.innerHTML = "Downloaded";
-          setTimeout(()=>{
-              downloadButton.innerHTML = "Download";
-          },3000)
-          setTimeout(() => {
-              downloadButton.classList.remove("animate");
-          }, 600);
-        });
-        
-  // making the function 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-  function submitForm(e){
-    e.preventDefault();
+// Reference to Realtime Database
+const contactDB = firebase.database().ref("AbhijeetPortfolio");
 
-    var username = getElememtValue('username');
-    var  email = getElememtValue('email');
-    var subject  = getElememtValue('subject');
-    var  message = getElememtValue('message');
 
-    // console.log(username,email,subject,message);
-    saveMessages(username,email,subject,message);
+/* ============================================================
+   CONTACT FORM
+============================================================ */
 
-    // show alert
-    button.innerHTML = "Message Sent";
-    document.querySelector(".alert").style.display = "block";
-    setTimeout(() => {
-        button.innerHTML = "Send Message";
-        document.querySelector(".alert").style.display = "none";
-    }, 3000);
-  }
+// Form Elements
+const form = document.querySelector("#contact-form");
+const nameInput = document.querySelector("#contact-name");
+const emailInput = document.querySelector("#contact-email");
+const messageInput = document.querySelector("#contact-message");
 
-//   to save the messages we create a function that stores data as a object
 
-const saveMessages = (username,email,subject,message)=>{
-    var newContactForm = AbhijeetPortfolioDB.push();
-    
-    newContactForm.set({
-        
-        username:username,
-        email: email,
-        subject: subject,
-        message: message,
-        
-    })
-}
+// Return form values after validation
+function getFormData() {
 
-//function to get the value
+    if (!form.reportValidity()) {
+        return null;
+    }
 
-const getElememtValue = (id)=>{
-    return document.getElementById(id).value;
+    return {
+        username: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        message: messageInput.value.trim()
+    };
 }
 
 
+// Send data to Firebase
+document
+    .querySelector("#send-message")
+    .addEventListener("click", () => {
+
+        const data = getFormData();
+
+        if (!data) return;
+
+        contactDB
+            .push(data)
+            .then(() => {
+
+                alert("Message sent successfully!");
+
+                form.reset();
+
+            })
+            .catch((error) => {
+
+                console.error(error);
+
+                alert("Failed to send message.");
+
+            });
+
+    });
 
 
+/* ============================================================
+   SEND EMAIL BUTTON
+============================================================ */
 
-$(document).ready(function(){
-    $(window).scroll(function(){
-        // sticky navbar on scroll script
-        if(this.scrollY > 20){
-            $('.navbar').addClass("sticky");
-        }else{
-            $('.navbar').removeClass("sticky");
+document
+    .querySelector("#send-email")
+    .addEventListener("click", () => {
+
+        const data = getFormData();
+
+        if (!data) return;
+
+        const subject = encodeURIComponent(
+            `Portfolio enquiry from ${data.username}`
+        );
+
+        const body = encodeURIComponent(
+`Hi Abhijeet,
+
+${data.message}
+
+From: ${data.username}
+Email: ${data.email}`
+        );
+
+        location.href =
+            `mailto:itsabhi739@gmail.com?subject=${subject}&body=${body}`;
+
+    });
+
+
+/* ============================================================
+   HEADER HIDE ON SCROLL
+============================================================ */
+
+const header = document.querySelector("[data-header]");
+let lastScroll = 0;
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > 120 && currentScroll > lastScroll) {
+            header.classList.add("hidden");
+        } else {
+            header.classList.remove("hidden");
         }
-        
-        // scroll-up button show/hide script
-        if(this.scrollY > 500){
-            $('.scroll-up-btn').addClass("show");
-        }else{
-            $('.scroll-up-btn').removeClass("show");
-        }
+
+        lastScroll = currentScroll;
+    },
+    { passive: true }
+);
+
+
+/* ============================================================
+   MOBILE MENU
+============================================================ */
+
+const menuButton = document.querySelector(".menu-btn");
+const navigation = document.querySelector(".nav-center");
+
+menuButton.addEventListener("click", () => {
+
+    const isOpen = navigation.classList.toggle("open");
+
+    menuButton.setAttribute("aria-expanded", isOpen);
+
+    menuButton.innerHTML = isOpen
+        ? '<i class="ri-close-line"></i>'
+        : '<i class="ri-menu-3-line"></i>';
+
+});
+
+
+// Close menu after clicking a navigation link
+document.querySelectorAll(".nav-center a").forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+        navigation.classList.remove("open");
+
+        menuButton.setAttribute("aria-expanded", "false");
+
+        menuButton.innerHTML =
+            '<i class="ri-menu-3-line"></i>';
+
     });
 
-    // slide-up script
-    $('.scroll-up-btn').click(function(){
-        $('html').animate({scrollTop: 0});
-        // removing smooth scroll on slide-up button click
-        $('html').css("scrollBehavior", "auto");
+});
+
+
+/* ============================================================
+   CURSOR GLOW EFFECT
+============================================================ */
+
+const cursorGlow = document.querySelector(".cursor-glow");
+
+if (
+    matchMedia("(pointer:fine)").matches &&
+    !matchMedia("(prefers-reduced-motion:reduce)").matches
+) {
+
+    let currentX = innerWidth / 2;
+    let currentY = innerHeight / 2;
+
+    let targetX = currentX;
+    let targetY = currentY;
+
+    addEventListener("pointermove", (event) => {
+
+        targetX = event.clientX;
+        targetY = event.clientY;
+
     });
 
-    $('.navbar .menu li a').click(function(){
-        // applying again smooth scroll on menu items click
-        $('html').css("scrollBehavior", "smooth");
-    });
+    function animateGlow() {
 
-    // toggle menu/navbar script
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
-    });
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
 
-    // typing text animation script
-    var typed = new Typed(".typing", {
-        strings: ["Front-End Developer", "C++ Developer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+        cursorGlow.style.left = currentX + "px";
+        cursorGlow.style.top = currentY + "px";
 
-    var typed = new Typed(".typing-2", {
-        strings: ["Front-End Developer", "C++ Developer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+        requestAnimationFrame(animateGlow);
 
-    // owl carousel script
-    $('.carousel').owlCarousel({
-        margin: 20,
-        loop: false,
-        autoplay: false,
-        autoplayTimeOut: 2000,
-        autoplayHoverPause: false,
-        responsive: {
-            0:{
-                items: 1,
-                nav: false
-            },
-            600:{
-                items: 2,
-                nav: false
-            },
-            1000:{
-                items: 3,
-                nav: false
+    }
+
+    animateGlow();
+
+}
+
+
+/* ============================================================
+   REVEAL ANIMATION
+============================================================ */
+
+const observer = new IntersectionObserver(
+
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("in");
+
+                observer.unobserve(entry.target);
+
             }
+
+        });
+
+    },
+
+    {
+        threshold: 0.12
+    }
+
+);
+
+document
+    .querySelectorAll(".reveal")
+    .forEach((element) => observer.observe(element));
+
+
+/* ============================================================
+   CURRENT YEAR
+============================================================ */
+
+document.querySelector("#year").textContent =
+    new Date().getFullYear();
+
+
+/* ============================================================
+   PROJECT CARD CLICK
+============================================================ */
+
+document
+    .querySelectorAll("[data-project-url]")
+    .forEach((card) => {
+
+        function openProject() {
+
+            window.open(
+                card.dataset.projectUrl,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
         }
+
+        card.addEventListener("click", (event) => {
+
+            if (!event.target.closest("a,button")) {
+                openProject();
+            }
+
+        });
+
+        card.addEventListener("keydown", (event) => {
+
+            if (event.key === "Enter" || event.key === " ") {
+
+                event.preventDefault();
+
+                openProject();
+
+            }
+
+        });
+
     });
+
+
+/* ============================================================
+   CURSOR RING EFFECT
+============================================================ */
+
+const cursorRing = document.querySelector(".cursor-ring");
+
+const isDesktop = matchMedia("(pointer:fine)").matches;
+const reduceMotion = matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+if (isDesktop && !reduceMotion) {
+
+    let currentX = innerWidth / 2;
+    let currentY = innerHeight / 2;
+
+    let targetX = currentX;
+    let targetY = currentY;
+
+    addEventListener("pointermove", (event) => {
+
+        targetX = event.clientX;
+        targetY = event.clientY;
+
+    });
+
+    function animateRing() {
+
+        currentX += (targetX - currentX) * 0.18;
+        currentY += (targetY - currentY) * 0.18;
+
+        cursorRing.style.left = currentX + "px";
+        cursorRing.style.top = currentY + "px";
+
+        requestAnimationFrame(animateRing);
+
+    }
+
+    animateRing();
+
+    // Magnetic buttons
+    document.querySelectorAll("[data-magnetic]").forEach((element) => {
+
+        element.addEventListener("mousemove", (event) => {
+
+            const rect = element.getBoundingClientRect();
+
+            const moveX =
+                event.clientX - rect.left - rect.width / 2;
+
+            const moveY =
+                event.clientY - rect.top - rect.height / 2;
+
+            element.style.transform =
+                `translate(${moveX * 0.18}px, calc(${moveY * 0.35}px - 2px))`;
+
+        });
+
+        element.addEventListener("mouseenter", () => {
+
+            cursorRing.classList.add("hover");
+
+        });
+
+        element.addEventListener("mouseleave", () => {
+
+            element.style.transform = "translate(0,0)";
+
+            cursorRing.classList.remove("hover");
+
+        });
+
+    });
+
+    // Cursor hover effect
+    document
+        .querySelectorAll("a,button,.project-clickable")
+        .forEach((element) => {
+
+            element.addEventListener("mouseenter", () => {
+
+                cursorRing.classList.add("hover");
+
+            });
+
+            element.addEventListener("mouseleave", () => {
+
+                cursorRing.classList.remove("hover");
+
+            });
+
+        });
+
+}
+
+
+/* ============================================================
+   LIGHT / DARK THEME
+============================================================ */
+
+const themeToggle = document.querySelector(".theme-toggle");
+const themeIcon = document.querySelector(".theme-icon");
+const themeLabel = document.querySelector(".theme-label");
+
+
+// Update Theme Button
+function updateThemeUI() {
+
+    const currentTheme =
+        document.documentElement.dataset.theme || "dark";
+
+    const nextTheme =
+        currentTheme === "dark" ? "light" : "dark";
+
+    themeIcon.className =
+        currentTheme === "dark"
+            ? "ri-sun-line theme-icon"
+            : "ri-moon-line theme-icon";
+
+    themeLabel.textContent =
+        nextTheme === "light"
+            ? "PLATINUM"
+            : "DARK";
+
+    themeToggle.setAttribute(
+        "aria-label",
+        `Switch to ${nextTheme}`
+    );
+
+    themeToggle.title =
+        `Switch to ${nextTheme}`;
+
+}
+
+updateThemeUI();
+
+
+// Toggle Theme
+themeToggle.addEventListener("click", () => {
+
+    const current =
+        document.documentElement.dataset.theme || "dark";
+
+    const next =
+        current === "dark" ? "light" : "dark";
+
+    document.documentElement.dataset.theme = next;
+
+    localStorage.setItem("portfolio-theme", next);
+
+    updateThemeUI();
+
 });
-
-
-
-
-const body = document.querySelector("body");
-
-const cursor = document.querySelector(".cursor");
-
-body.addEventListener("mousemove",function(details){
-
-    cursor.style.left = (details.x)+"px"
-    cursor.style.top = (details.y)+"px"
-    cursor.style.backgroundColor = 'white';
-})
-
-
-const text2 = document.querySelector('.text-2');
-
-text2.addEventListener('mouseover',function(){
-    cursor.style.height = '70px';
-    cursor.style.width = "70px";
-})
-
-text2.addEventListener('mouseout',function(){
-    cursor.style.height = '20px';
-    cursor.style.width = '20px';
-})
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    // HTML progress bar
-    document.querySelector('.skills-content .right .html::before').style.width = '90%';
-
-    // CSS progress bar
-    document.querySelector('.skills-content .right .css::before').style.width = '80%';
-
-    // JavaScript progress bar
-    document.querySelector('.skills-content .right .js::before').style.width = '70%';
-});
-
-
