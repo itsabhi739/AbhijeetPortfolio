@@ -537,7 +537,9 @@ ul {
   padding: 22px 26px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  position: relative;
+  z-index: 6;
 }
 .project-base span {
   font-size: 8px;
@@ -551,6 +553,31 @@ ul {
 .project-arrow {
   font-size: 25px;
 }
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.project-action {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #333;
+  background: #0c0c0c;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.project-action i {
+  font-size: 18px;
+}
+.project-action:hover,
+.project-action:focus-visible {
+  color: var(--lime);
+  border-color: var(--lime);
+}
 .project-overlay {
   position: absolute;
   inset: 0;
@@ -563,6 +590,11 @@ ul {
   transform: translateY(101%);
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 5;
+  pointer-events: none;
+}
+.project-overlay.is-open {
+  transform: translateY(0);
+  pointer-events: auto;
 }
 .project-overlay > span {
   font-size: 9px;
@@ -580,11 +612,6 @@ ul {
 .project-overlay .tags span {
   border-color: rgba(0, 0, 0, 0.35);
   color: #000;
-}
-.project:hover .project-overlay,
-.project:focus .project-overlay,
-.project:focus-within .project-overlay {
-  transform: translateY(0);
 }
 .project:hover .ui-frame {
   transform: perspective(1000px) rotateY(0) rotateX(0) scale(1.04);
@@ -970,9 +997,6 @@ ul {
   .project-overlay {
     transition: none;
   }
-}
-.project-clickable {
-  cursor: pointer;
 }
 .magnetic {
   will-change: transform;

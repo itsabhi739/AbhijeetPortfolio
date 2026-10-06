@@ -250,40 +250,28 @@ document.querySelector("#year").textContent =
 
 
 /* ============================================================
-   PROJECT CARD CLICK
+   PROJECT CASE STUDIES
 ============================================================ */
 
 document
-    .querySelectorAll("[data-project-url]")
-    .forEach((card) => {
+    .querySelectorAll(".case-study-toggle")
+    .forEach((button) => {
 
-        function openProject() {
+        const overlay = document.getElementById(
+            button.getAttribute("aria-controls")
+        );
 
-            window.open(
-                card.dataset.projectUrl,
-                "_blank",
-                "noopener,noreferrer"
+        button.addEventListener("click", () => {
+
+            const isOpen = button.getAttribute("aria-expanded") === "true";
+
+            button.setAttribute("aria-expanded", String(!isOpen));
+            button.setAttribute(
+                "aria-label",
+                `${isOpen ? "Open" : "Close"} ${button.dataset.projectName} case study`
             );
-
-        }
-
-        card.addEventListener("click", (event) => {
-
-            if (!event.target.closest("a,button")) {
-                openProject();
-            }
-
-        });
-
-        card.addEventListener("keydown", (event) => {
-
-            if (event.key === "Enter" || event.key === " ") {
-
-                event.preventDefault();
-
-                openProject();
-
-            }
+            overlay.classList.toggle("is-open", !isOpen);
+            overlay.setAttribute("aria-hidden", String(isOpen));
 
         });
 
